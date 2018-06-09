@@ -17,7 +17,7 @@ const cards = ['fa-diamond', 'fa-diamond',
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-const cardDeck = document.querySelector('.deck');
+const deck = document.querySelector('.deck');
 
 function initGame() {
     const fragment = document.createDocumentFragment();
@@ -26,8 +26,9 @@ function initGame() {
         const newCard = generateCard(card);
         fragment.appendChild(newCard);
     }
-    cardDeck.appendChild(fragment);
+    deck.appendChild(fragment);
 }
+
 /*
 * generateCard function use to create card
 * @Pram cart symbol cardType
@@ -68,3 +69,55 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 initGame();
+let openCards = [];
+
+
+deck.addEventListener("click", function (element) {
+        if (element.target.nodeName === "LI") {
+            let card = element.target;
+            if (!card.classList.contains('show') && !card.classList.contains('open') && !card.classList.contains('match')) {
+                if (openCards.length < 2)
+                {
+                    openCard(card);
+                    addCardToOpenList(card);
+                }
+                if (openCards.length === 2) {
+                    setTimeout(function () {
+                        for (const card of openCards)
+                        {
+                            closeCard(card);
+                        }
+                        openCards = [];
+                    },500);
+                }
+            }
+        }
+    }
+);
+
+/*
+* function addCardToOpenList use to add card to open card list
+* @Param card
+* @return void
+* */
+function openCard(card) {
+    card.classList.add('show', 'open');
+}
+
+/*
+* function closeCard use to close card
+* @Param card
+* @return void
+* */
+function closeCard(card) {
+    card.classList.remove('show', 'open');
+}
+
+/*
+* function addCardToOpenList use to add card to open card list
+* @Param card
+* @return void
+* */
+function addCardToOpenList(card) {
+    openCards.push(card);
+}
