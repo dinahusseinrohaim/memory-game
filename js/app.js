@@ -1,7 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
-const cards = ['fa-diamond', 'fa-diamond',
+const cards = [
+    'fa-diamond', 'fa-diamond',
     'fa-paper-plane-o', 'fa-paper-plane-o',
     'fa-anchor', 'fa-anchor',
     'fa-bolt', 'fa-bolt',
@@ -70,7 +71,7 @@ function shuffle(array) {
  */
 initGame();
 let openCards = [];
-
+let matchedCards = [];
 
 deck.addEventListener("click", function (element) {
         if (element.target.nodeName === "LI") {
@@ -82,13 +83,24 @@ deck.addEventListener("click", function (element) {
                     addCardToOpenList(card);
                 }
                 if (openCards.length === 2) {
-                    setTimeout(function () {
+                    //if cards match Keep cards open
+                    if (openCards[0].dataset.card === openCards[1].dataset.card) {
                         for (const card of openCards)
                         {
-                            closeCard(card);
+                            keepCardsOpen(card);
+                            matchedCards.push(card);
                         }
                         openCards = [];
-                    },500);
+                    } else {
+                        //if cards don't match Close cards
+                        setTimeout(function () {
+                            for (const card of openCards)
+                            {
+                                closeCard(card);
+                            }
+                            openCards = [];
+                        },500);
+                    }
                 }
             }
         }
@@ -120,4 +132,14 @@ function closeCard(card) {
 * */
 function addCardToOpenList(card) {
     openCards.push(card);
+}
+
+/*
+* function keepCardsOpen use to keep card open
+* @Param card
+* @return void
+* */
+function keepCardsOpen(card) {
+    card.classList.add('match');
+    card.classList.remove('show', 'open');
 }
