@@ -1,7 +1,15 @@
 /*
  * Create a list that holds all of your cards
  */
-
+const cards = ['fa-diamond', 'fa-diamond',
+    'fa-paper-plane-o', 'fa-paper-plane-o',
+    'fa-anchor', 'fa-anchor',
+    'fa-bolt', 'fa-bolt',
+    'fa-cube', 'fa-cube',
+    'fa-leaf', 'fa-leaf',
+    'fa-bomb', 'fa-bomb',
+    'fa-bicycle', 'fa-bicycle'
+];
 
 /*
  * Display the cards on the page
