@@ -17,6 +17,29 @@ const cards = ['fa-diamond', 'fa-diamond',
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+const cardDeck = document.querySelector('.deck');
+
+function initGame() {
+    const fragment = document.createDocumentFragment();
+    shuffle(cards);
+    for (const card of cards) {
+        const newCard = generateCard(card);
+        fragment.appendChild(newCard);
+    }
+    cardDeck.appendChild(fragment);
+}
+/*
+* generateCard function use to create card
+* @Pram cart symbol cardType
+* @return String card
+* */
+function generateCard(cardType) {
+    const card = document.createElement('li');
+    card.setAttribute('class', 'card');
+    card.setAttribute('data-card', cardType);
+    card.innerHTML = `<i class='fa ${cardType}'></i>`;
+    return card;
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -44,3 +67,4 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+initGame();
