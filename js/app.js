@@ -19,6 +19,8 @@ const cards = [
  *   - add each card's HTML to the page
  */
 const deck = document.querySelector('.deck');
+const movesCounter = document.querySelector('.moves');
+let moves = 0;
 
 function initGame() {
     const fragment = document.createDocumentFragment();
@@ -28,6 +30,7 @@ function initGame() {
         fragment.appendChild(newCard);
     }
     deck.appendChild(fragment);
+    movesCounter.textContent = moves;
 }
 
 /*
@@ -72,6 +75,7 @@ function shuffle(array) {
 initGame();
 let openCards = [];
 let matchedCards = [];
+let clickCounter = 0;
 
 deck.addEventListener("click", function (element) {
         if (element.target.nodeName === "LI") {
@@ -79,6 +83,7 @@ deck.addEventListener("click", function (element) {
             if (!card.classList.contains('show') && !card.classList.contains('open') && !card.classList.contains('match')) {
                 if (openCards.length < 2)
                 {
+                    clickCounter++;
                     openCard(card);
                     addCardToOpenList(card);
                 }
@@ -101,6 +106,7 @@ deck.addEventListener("click", function (element) {
                             openCards = [];
                         },500);
                     }
+                    updateMoves();
                 }
             }
         }
@@ -142,4 +148,13 @@ function addCardToOpenList(card) {
 function keepCardsOpen(card) {
     card.classList.add('match');
     card.classList.remove('show', 'open');
+}
+/*
+* function updateMoves use to update user moves
+* @Param card
+* @return void
+* */
+function updateMoves() {
+    moves++;
+    movesCounter.textContent = moves;
 }
