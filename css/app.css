@@ -112,6 +112,9 @@ h1 {
     float: right;
     margin-right: 50px;
 }
+/*
+* style for modal message
+*/
 #overlay{
     position: fixed;
     background: rgba(0,0,0,0.8);
@@ -142,9 +145,15 @@ h1 {
     margin: 0 10px;
     cursor: pointer;
 }
+/*
+* style for stars
+*/
 .stars i.fa.fa-star {
     color: gold;
 }
+/*
+* style for restart game btn
+*/
 .restart i.fa.fa-repeat {
     color: red;
 }

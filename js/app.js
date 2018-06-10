@@ -28,7 +28,9 @@ const stars = document.querySelector('.stars');
 const restart = document.querySelector('.restart');
 
 let moves = 0;
-
+/*
+* initGame function use to init game
+* */
 function initGame() {
     const fragment = document.createDocumentFragment();
     shuffle(cards);
@@ -88,6 +90,7 @@ let minutes = 0;
 let timer = 0;
 let starsLost = 0;
 
+// add event listener to deck and target card
 deck.addEventListener("click", function (element) {
         if (element.target.nodeName === "LI") {
             let card = element.target;
@@ -149,6 +152,7 @@ deck.addEventListener("click", function (element) {
     }
 );
 
+// add event listener to popup and target anchor link
 popup.addEventListener('click', function(element) {
     if (element.target.nodeName === 'A') {
         if (element.target.classList.contains('close')) {
@@ -165,6 +169,7 @@ popup.addEventListener('click', function(element) {
     }
 });
 
+// add event listener to restart btn
 restart.addEventListener('click', resetGame);
 
 
