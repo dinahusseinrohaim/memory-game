@@ -119,7 +119,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    display: block;
+    display: none;
 }
 #popup-message{
     background: #fff;
@@ -129,7 +129,7 @@ h1 {
     top: 150px;
     padding: 20px;
     position: absolute;
-    display: block;
+    display: none;
 }
 #popup-message .finish-game{
     text-align: center;
