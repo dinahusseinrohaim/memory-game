@@ -254,6 +254,7 @@ function isCompleted() {
 * */
 function resetGame() {
     deck.innerHTML = '';
+    openCards = [];
     matchedCards = [];
     moves = 0;
     clickCounter = 0;
