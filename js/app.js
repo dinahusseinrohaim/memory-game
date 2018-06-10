@@ -82,13 +82,13 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 initGame();
-let openCards = [];
-let matchedCards = [];
-let clickCounter = 0;
-let seconds = 0;
-let minutes = 0;
-let timer = 0;
-let starsLost = 0;
+let openCards = [],
+    matchedCards = [],
+    clickCounter = 0,
+    seconds = 0,
+    minutes = 0,
+    timer = 0,
+    starsLost = 0;
 
 // add event listener to deck and target card
 deck.addEventListener("click", function (element) {
