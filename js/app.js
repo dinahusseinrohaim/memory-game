@@ -20,6 +20,7 @@ const cards = [
  */
 const deck = document.querySelector('.deck');
 const movesCounter = document.querySelector('.moves');
+const time = document.querySelector('.time');
 let moves = 0;
 
 function initGame() {
@@ -76,6 +77,9 @@ initGame();
 let openCards = [];
 let matchedCards = [];
 let clickCounter = 0;
+let seconds = 0;
+let minutes = 0;
+let timer = 0;
 
 deck.addEventListener("click", function (element) {
         if (element.target.nodeName === "LI") {
@@ -84,6 +88,11 @@ deck.addEventListener("click", function (element) {
                 if (openCards.length < 2)
                 {
                     clickCounter++;
+                    //check if first click ... start timer
+                    if (clickCounter === 1)
+                    {
+                        startTimer();
+                    }
                     openCard(card);
                     addCardToOpenList(card);
                 }
@@ -151,10 +160,31 @@ function keepCardsOpen(card) {
 }
 /*
 * function updateMoves use to update user moves
-* @Param card
 * @return void
 * */
 function updateMoves() {
     moves++;
     movesCounter.textContent = moves;
+}
+
+/*
+* function addTime use to increase time and display time in html
+* @return void
+* */
+function addTime() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+    }
+    time.textContent = `${(minutes ? (minutes > 9 ? minutes : '0' + minutes) : '00')}:${(seconds ? (seconds > 9 ? seconds : '0' + seconds) : '00')}`;
+}
+
+
+/*
+* function startTimer use to start time
+* @return void
+* */
+function startTimer() {
+    timer = setInterval(addTime, 1000);
 }
