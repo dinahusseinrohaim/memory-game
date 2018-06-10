@@ -157,7 +157,9 @@ h1 {
 .restart i.fa.fa-repeat {
     color: red;
 }
-
+/*
+* style for responsive ui on mobile
+*/
 @media screen and (max-width: 600px) {
     .deck {
         width: 95%;
