@@ -249,6 +249,19 @@ function isCompleted() {
 }
 
 /*
+* function generateStar use to display stars on html
+* @Param starsLost
+* @return void
+* */
+function generateStar(starsLost) {
+    for (let i = 0; i < starsLost; i++) {
+        const starSymbol = document.createElement('li');
+        starSymbol.innerHTML = '<i class="fa fa-star"></i>';
+        stars.appendChild(starSymbol);
+    }
+}
+
+/*
 * function resetGame use to reset game
 * @return void
 * */
@@ -263,5 +276,7 @@ function resetGame() {
     minutes = 0;
     timer = 0;
     time.textContent = '00:00';
+    generateStar(starsLost);
+    starsLost = 0;
     initGame();
 }
