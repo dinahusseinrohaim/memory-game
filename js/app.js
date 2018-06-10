@@ -21,6 +21,9 @@ const cards = [
 const deck = document.querySelector('.deck');
 const movesCounter = document.querySelector('.moves');
 const time = document.querySelector('.time');
+const overlay = document.querySelector('#overlay');
+const popup = document.querySelector('#popup-message');
+const message = document.querySelector('.message');
 let moves = 0;
 
 function initGame() {
@@ -116,11 +119,31 @@ deck.addEventListener("click", function (element) {
                         },500);
                     }
                     updateMoves();
+                    //Display message when all cards are matched
+                    if (isCompleted()) {
+                        clearInterval(timer);
+                        message.textContent = `You completed the game in ${time.textContent} with ${moves} moves`;
+                        overlay.style.display = 'block';
+                        popup.style.display = 'block';
+                    }
                 }
             }
         }
     }
 );
+
+popup.addEventListener('click', function(element) {
+    if (element.target.nodeName === 'A') {
+        if (element.target.classList.contains('close')) {
+            popup.style.display = 'none';
+        } else if (element.target.classList.contains('yes')) {
+            popup.style.display = 'none';
+            resetGame();
+        } else {
+            popup.style.display = 'none';
+        }
+    }
+});
 
 /*
 * function addCardToOpenList use to add card to open card list
@@ -187,4 +210,29 @@ function addTime() {
 * */
 function startTimer() {
     timer = setInterval(addTime, 1000);
+}
+
+/*
+* function IsCompleted use to start time
+* @return bool
+* */
+function isCompleted() {
+    return cards.length === matchedCards.length;
+}
+
+/*
+* function resetGame use to reset game
+* @return void
+* */
+function resetGame() {
+    deck.innerHTML = '';
+    matchedCards = [];
+    moves = 0;
+    clickCounter = 0;
+    clearInterval(timer);
+    seconds = 0;
+    minutes = 0;
+    timer = 0;
+    time.textContent = '0:00';
+    initGame();
 }
