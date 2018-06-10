@@ -157,3 +157,14 @@ h1 {
 .restart i.fa.fa-repeat {
     color: red;
 }
+
+@media screen and (max-width: 600px) {
+    .deck {
+        width: 95%;
+        padding: 10px;
+    }
+    .deck .card {
+        height: 100px;
+        width: 100px;
+    }
+}
