@@ -136,11 +136,14 @@ popup.addEventListener('click', function(element) {
     if (element.target.nodeName === 'A') {
         if (element.target.classList.contains('close')) {
             popup.style.display = 'none';
+            overlay.style.display = 'none';
         } else if (element.target.classList.contains('yes')) {
             popup.style.display = 'none';
+            overlay.style.display = 'none';
             resetGame();
         } else {
             popup.style.display = 'none';
+            overlay.style.display = 'none';
         }
     }
 });
