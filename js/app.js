@@ -24,6 +24,8 @@ const time = document.querySelector('.time');
 const overlay = document.querySelector('#overlay');
 const popup = document.querySelector('#popup-message');
 const message = document.querySelector('.message');
+const stars = document.querySelector('.stars');
+
 let moves = 0;
 
 function initGame() {
@@ -83,6 +85,7 @@ let clickCounter = 0;
 let seconds = 0;
 let minutes = 0;
 let timer = 0;
+let starsLost = 0;
 
 deck.addEventListener("click", function (element) {
         if (element.target.nodeName === "LI") {
@@ -119,10 +122,23 @@ deck.addEventListener("click", function (element) {
                         },500);
                     }
                     updateMoves();
+
+                    //A star is lost after a certain number of moves
+                    switch (moves) {
+                        case 14:
+                            stars.removeChild(stars.firstElementChild);
+                            starsLost++;
+                            break;
+                        case 18:
+                            stars.removeChild(stars.firstElementChild);
+                            starsLost++;
+                            break;
+                    }
+
                     //Display message when all cards are matched
                     if (isCompleted()) {
                         clearInterval(timer);
-                        message.textContent = `You completed the game in ${time.textContent} with ${moves} moves`;
+                        message.textContent = `You completed the game in ${time.textContent} with ${moves} moves and ${3 - starsLost} stars remaining`;
                         overlay.style.display = 'block';
                         popup.style.display = 'block';
                     }
@@ -236,6 +252,6 @@ function resetGame() {
     seconds = 0;
     minutes = 0;
     timer = 0;
-    time.textContent = '0:00';
+    time.textContent = '00:00';
     initGame();
 }
