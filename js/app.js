@@ -25,6 +25,7 @@ const overlay = document.querySelector('#overlay');
 const popup = document.querySelector('#popup-message');
 const message = document.querySelector('.message');
 const stars = document.querySelector('.stars');
+const restart = document.querySelector('.restart');
 
 let moves = 0;
 
@@ -163,6 +164,9 @@ popup.addEventListener('click', function(element) {
         }
     }
 });
+
+restart.addEventListener('click', resetGame);
+
 
 /*
 * function addCardToOpenList use to add card to open card list
