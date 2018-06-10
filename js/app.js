@@ -18,14 +18,14 @@ cards = [...cards, ...cards];
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-const deck = document.querySelector('.deck');
-const movesCounter = document.querySelector('.moves');
-const time = document.querySelector('.time');
-const overlay = document.querySelector('#overlay');
-const popup = document.querySelector('#popup-message');
-const message = document.querySelector('.message');
-const stars = document.querySelector('.stars');
-const restart = document.querySelector('.restart');
+const deck = document.querySelector('.deck'),
+    movesCounter = document.querySelector('.moves'),
+    time = document.querySelector('.time'),
+    overlay = document.querySelector('#overlay'),
+    popup = document.querySelector('#popup-message'),
+    message = document.querySelector('.message'),
+    stars = document.querySelector('.stars'),
+    restart = document.querySelector('.restart');
 
 let moves = 0;
 /*
